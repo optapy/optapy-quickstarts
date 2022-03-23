@@ -1,0 +1,17 @@
+__pycache__
+/target
+/build
+/local
+venv
+graalvenv
+
+# Eclipse, Netbeans and IntelliJ files
+/.*
+!.gitignore
+!.dockerignore
+!.mvn
+!.github
+/nbproject
+*.ipr
+*.iws
+*.iml
