@@ -42,7 +42,7 @@ Find the most efficient routes for a fleet of vehicles.
 
 image::images/vehicle-routing-screenshot.png[]
 
-* link:school-timetabling/README.adoc[Run the vehicle routing quickstart locally]
+* link:vehicle-routing/README.adoc[Run the vehicle routing quickstart locally]
 
 [[employee-scheduling]]
 === Employee scheduling
