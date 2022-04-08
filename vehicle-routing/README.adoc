@@ -1,8 +1,10 @@
-= Employee Scheduling
+= Vehicle Routing
 
-Schedule shifts to employees, accounting for employee availability and shift skill requirements.
+https://mybinder.org/v2/gh/optapy/optapy-quickstarts/stable?filepath=vehicle-routing/vehicle-routing-quickstart.ipynb[image:https://mybinder.org/badge_logo.svg[Binder]]
 
-image::../images/employee-scheduling-screenshot.png[]
+Find the most efficient routes for a fleet of vehicles.
+
+image::../images/vehicle-routing-screenshot.png[]
 
 * <<requirements,Requirements>>
 * <<run,Run the application>>
@@ -23,7 +25,7 @@ image::../images/employee-scheduling-screenshot.png[]
 [source, shell]
 ----
 $ git clone https://github.com/optapy/optapy-quickstarts.git
-$ cd optapy-quickstarts/employee-scheduling
+$ cd optapy-quickstarts/vehicle-routing
 ----
 
 . Activate a virtual environment
