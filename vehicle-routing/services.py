@@ -1,5 +1,5 @@
 from domain import Vehicle, VehicleRoutingSolution
-from optapy import solver_manager_create, score_manager_create, get_class
+from optapy import solver_manager_create, score_manager_create
 import optapy.config
 from optapy.types import Duration
 from optapy.score import HardSoftScore
@@ -12,9 +12,9 @@ app = Flask(__name__)
 SINGLETON_ID = 1
 solver_config = optapy.config.solver.SolverConfig()
 solver_config \
-    .withSolutionClass(get_class(VehicleRoutingSolution)) \
-    .withEntityClasses(get_class(Vehicle)) \
-    .withConstraintProviderClass(get_class(vehicle_routing_constraints)) \
+    .withSolutionClass(VehicleRoutingSolution) \
+    .withEntityClasses(Vehicle) \
+    .withConstraintProviderClass(vehicle_routing_constraints) \
     .withTerminationSpentLimit(Duration.ofSeconds(30))
 
 solver_manager = solver_manager_create(solver_config)
