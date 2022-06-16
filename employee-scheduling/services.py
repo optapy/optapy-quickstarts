@@ -1,7 +1,7 @@
 from domain import Employee, Shift, Availability, AvailabilityType, ScheduleState, EmployeeSchedule
 import datetime
 from random import Random
-from optapy import solver_manager_create, score_manager_create, get_class
+from optapy import solver_manager_create, score_manager_create
 import optapy.config
 from optapy.types import Duration, SolverStatus
 from optapy.score import HardSoftScore
@@ -168,9 +168,9 @@ def join_all_combinations(*part_arrays: list[str]):
 SINGLETON_ID = 1
 solver_config = optapy.config.solver.SolverConfig()
 solver_config\
-    .withSolutionClass(get_class(EmployeeSchedule))\
-    .withEntityClasses(get_class(Shift))\
-    .withConstraintProviderClass(get_class(employee_scheduling_constraints))\
+    .withSolutionClass(EmployeeSchedule)\
+    .withEntityClasses(Shift)\
+    .withConstraintProviderClass(employee_scheduling_constraints)\
     .withTerminationSpentLimit(Duration.ofSeconds(60))
 
 solver_manager = solver_manager_create(solver_config)
