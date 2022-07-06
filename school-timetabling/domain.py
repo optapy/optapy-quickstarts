@@ -1,3 +1,6 @@
+import datetime
+
+import optapy
 from optapy import problem_fact, planning_id, planning_entity, planning_variable, \
     planning_solution, planning_entity_collection_property, \
     problem_fact_collection_property, \
@@ -8,6 +11,9 @@ from datetime import time
 
 @problem_fact
 class Room:
+    id: int
+    name: str
+
     def __init__(self, id, name):
         self.id = id
         self.name = name
@@ -22,6 +28,11 @@ class Room:
 
 @problem_fact
 class Timeslot:
+    id: int
+    day_of_week: str
+    start_time: datetime.time
+    end_time: datetime.time
+
     def __init__(self, id, day_of_week, start_time, end_time):
         self.id = id
         self.day_of_week = day_of_week
@@ -44,6 +55,13 @@ class Timeslot:
 
 @planning_entity
 class Lesson:
+    id: int
+    subject: str
+    teacher: str
+    student_group: str
+    timeslot: Timeslot
+    room: Room
+
     def __init__(self, id, subject, teacher, student_group, timeslot=None, room=None):
         self.id = id
         self.subject = subject
@@ -89,6 +107,11 @@ def format_list(a_list):
 
 @planning_solution
 class TimeTable:
+    timeslot_list: list[Timeslot]
+    room_list: list[Room]
+    lesson_list: list[Lesson]
+    score: HardSoftScore
+
     def __init__(self, timeslot_list, room_list, lesson_list, score=None):
         self.timeslot_list = timeslot_list
         self.room_list = room_list
