@@ -8,7 +8,7 @@ from datetime import datetime, date, timedelta
 today = date.today()
 
 
-def within_30_minutes(lesson1, lesson2):
+def within_30_minutes(lesson1: Lesson, lesson2: Lesson):
     between = datetime.combine(today, lesson1.timeslot.end_time) - datetime.combine(today, lesson2.timeslot.start_time)
     return timedelta(minutes=0) <= between <= timedelta(minutes=30)
 

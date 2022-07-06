@@ -1,4 +1,5 @@
 import optapy
+import optapy.types
 import optapy.score
 import datetime
 import enum
@@ -6,7 +7,10 @@ import enum
 
 @optapy.problem_fact
 class Employee:
-    def __init__(self, name: str = None, skill_set: list = None):
+    name: str
+    skill_set: list[str]
+
+    def __init__(self, name: str = None, skill_set: list[str] = None):
         self.name = name
         self.skill_set = skill_set
 
@@ -32,6 +36,10 @@ class AvailabilityType(enum.Enum):
 
 @optapy.problem_fact
 class Availability:
+    employee: Employee
+    date: datetime.date
+    availability_type: AvailabilityType
+
     def __init__(self, employee: Employee = None, date: datetime.date = None,
                  availability_type: AvailabilityType = None):
         self.employee = employee
@@ -50,6 +58,11 @@ class Availability:
 
 
 class ScheduleState:
+    publish_length: int
+    draft_length: int
+    first_draft_date: datetime.date
+    last_historic_date: datetime.date
+
     def __init__(self, publish_length: int = None, draft_length: int = None, first_draft_date: datetime.date = None,
                  last_historic_date: datetime.date = None):
         self.publish_length = publish_length
@@ -75,6 +88,12 @@ def shift_pinning_filter(solution, shift):
 
 @optapy.planning_entity(pinning_filter=shift_pinning_filter)
 class Shift:
+    start: datetime.datetime
+    end: datetime.datetime
+    location: str
+    required_skill: str
+    employee: Employee
+
     def __init__(self, start: datetime.datetime = None, end: datetime.datetime = None,
                  location: str = None, required_skill: str = None, employee: Employee = None):
         self.start = start
@@ -110,6 +129,13 @@ class Shift:
 
 @optapy.planning_solution
 class EmployeeSchedule:
+    schedule_state: ScheduleState
+    availability_list: list[Availability]
+    employee_list: list[Employee]
+    shift_list: list[Shift]
+    solver_status: optapy.types.SolverStatus
+    score: optapy.score.SimpleScore
+
     def __init__(self, schedule_state, availability_list, employee_list, shift_list, solver_status, score=None):
         self.employee_list = employee_list
         self.availability_list = availability_list

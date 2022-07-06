@@ -6,6 +6,11 @@ from optapy.score import HardSoftScore
 
 @problem_fact
 class Location:
+    id: int
+    latitude: float
+    longitude: float
+    distance_map: dict['Location', float]
+
     def __init__(self, _id, latitude, longitude, distance_map=None):
         self.id = _id
         self.latitude = latitude
@@ -35,6 +40,10 @@ class Location:
 
 @problem_fact
 class Customer:
+    id: int
+    location: Location
+    demand: int
+
     def __init__(self, _id, location, demand):
         self.id = _id
         self.location = location
@@ -56,6 +65,9 @@ class Customer:
 
 @problem_fact
 class Depot:
+    id: int
+    location: Location
+
     def __init__(self, _id, location):
         self.id = _id
         self.location = location
@@ -72,6 +84,11 @@ class Depot:
 
 @planning_entity
 class Vehicle:
+    id: int
+    capacity: int
+    depot: Depot
+    customer_list: list[Customer]
+
     def __init__(self, _id, capacity, depot, customer_list=None):
         self.id = _id
         self.capacity = capacity
