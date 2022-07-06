@@ -101,8 +101,8 @@ def desired_day_for_employee(constraint_factory: ConstraintFactory):
                             lambda availability: availability.date)
               ) \
         .filter(lambda shift, availability: availability.availability_type == AvailabilityType.DESIRED) \
-        .penalize('Desired day for employee', HardSoftScore.ONE_SOFT,
-                  lambda shift, availability: get_shift_duration_in_minutes(shift))
+        .reward('Desired day for employee', HardSoftScore.ONE_SOFT,
+                lambda shift, availability: get_shift_duration_in_minutes(shift))
 
 
 def undesired_day_for_employee(constraint_factory: ConstraintFactory):
