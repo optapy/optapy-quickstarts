@@ -8,6 +8,7 @@ image::../images/school-timetabling-screenshot.png[]
 
 * <<requirements,Requirements>>
 * <<run,Run the application>>
+* <<test,Test the application>>
 
 
 [[requirements]]
@@ -98,6 +99,40 @@ OptaPy will begin solving the schedule and print it when finished:
 |            | 9th grade  | 10th grade |            |
 |------------|------------|------------|------------|
 
+----
+
+
+[[test]]
+== Run the tests
+
+. Git clone the optapy-quickstarts repo and navigate to this directory:
++
+[source, shell]
+----
+$ git clone https://github.com/optapy/optapy-quickstarts.git
+$ cd optapy-quickstarts/school-timetabling
+----
+
+. Activate a virtual environment
++
+[source, shell]
+----
+$ python -m venv venv
+$ . venv/bin/activate
+----
+
+. Install the quickstart requirements and a testing framework to the virtual environment
++
+[source, shell]
+----
+$ pip install -r requirements.txt pytest
+----
+
+. Run the tests
++
+[source, shell]
+----
+$ python -m pytest tests.py
 ----
 
 
