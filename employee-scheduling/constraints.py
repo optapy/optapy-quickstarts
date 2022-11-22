@@ -65,7 +65,7 @@ def at_least_10_hours_between_two_shifts(constraint_factory: ConstraintFactory):
                 (second_shift.start - first_shift.end).total_seconds() < TEN_HOURS_IN_SECONDS) \
         .penalize("At least 10 hours between 2 shifts", HardSoftScore.ONE_HARD,
                   lambda first_shift, second_shift:
-                  TEN_HOURS_IN_SECONDS - ((second_shift.start - first_shift.end).total_seconds() // 60))
+                  (TEN_HOURS_IN_SECONDS - (second_shift.start - first_shift.end).total_seconds()) // 60)
 
 
 def one_shift_per_day(constraint_factory: ConstraintFactory):

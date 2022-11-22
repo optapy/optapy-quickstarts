@@ -88,14 +88,16 @@ def shift_pinning_filter(solution, shift):
 
 @optapy.planning_entity(pinning_filter=shift_pinning_filter)
 class Shift:
+    id: int
     start: datetime.datetime
     end: datetime.datetime
     location: str
     required_skill: str
     employee: Employee
 
-    def __init__(self, start: datetime.datetime = None, end: datetime.datetime = None,
+    def __init__(self, id: int = None, start: datetime.datetime = None, end: datetime.datetime = None,
                  location: str = None, required_skill: str = None, employee: Employee = None):
+        self.id = id
         self.start = start
         self.end = end
         self.location = location
@@ -114,7 +116,7 @@ class Shift:
         self.employee = employee
 
     def __str__(self):
-        return f'Shift(start={self.start}, end={self.end}, location={self.location}, ' \
+        return f'Shift(id={self.id}, start={self.start}, end={self.end}, location={self.location}, ' \
                f'required_skill={self.required_skill}, employee={self.employee})'
 
     def to_dict(self):
