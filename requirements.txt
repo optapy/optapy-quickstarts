@@ -1,4 +1,4 @@
-optapy==8.28.0b0
+optapy==8.30.0b0
 ipywidgets
 ipyleaflet
 ipysheet
