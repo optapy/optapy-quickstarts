@@ -1,2 +1,2 @@
-optapy==8.31.1b0
+optapy==9.37.0b0
 Flask==2.0.2
